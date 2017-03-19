@@ -18,10 +18,10 @@ task :tweet do
 
   client.list_timeline("icco", "short-list", {count: 500}).each do |t|
     break if Chronic.parse("last night") > t.created_at
-    emailbody += "> \"#{t.full_text}\"\n - @#{t.user.screen_name} / #{t.created_at}\n - #{t.uri}\n\n"
+    emailbody += "> \"#{t.full_text}\"\n\n - @#{t.user.screen_name} / #{t.created_at}\n - #{t.uri}\n\n"
   end
 
-  markdown = Redcarpet::Render::HTML.new(render_options = {})
+  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
   html = markdown.render(emailbody)
 
   if ENV['POSTMARK_API_TOKEN']
