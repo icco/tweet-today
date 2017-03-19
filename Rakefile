@@ -23,7 +23,7 @@ task :tweet do
 
   client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
   client.deliver(
-    from: "Tweet Today <nat+tweets@natwelch.com>",
+    from: "Tweet Today <tweets@distraction.today>",
     to: 'Nat Welch <nat@natwelch.com>',
     subject: "Tweet Today #{Time.now.strftime("%F")}",
     html_body: emailbody,
