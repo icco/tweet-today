@@ -21,7 +21,8 @@ task :tweet do
     emailbody += "> \"#{t.full_text}\"\n - @#{t.user.screen_name} / #{t.created_at}\n - #{t.uri}\n\n"
   end
 
-  doc = CommonMarker.render_doc(emailbody, :DEFAULT)
+  markdown = Redcarpet::Render::HTML.new(render_options = {})
+  html = markdown.render(emailbody)
 
   if ENV['POSTMARK_API_TOKEN']
     client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
@@ -29,12 +30,12 @@ task :tweet do
       from: "Tweet Today <tweets@distraction.today>",
       to: 'Nat Welch <nat@natwelch.com>',
       subject: "Tweet Today #{Time.now.strftime("%F")}",
-      html_body: doc.to_html,
+      html_body: html,
       text_body: emailbody,
       track_links: :html_and_text)
   else
     puts emailbody
 
-    puts doc.to_html
+    puts html
   end
 end

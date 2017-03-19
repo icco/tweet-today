@@ -5,8 +5,6 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     buftok (0.2.0)
     chronic (0.10.2)
-    commonmarker (0.14.8)
-      ruby-enum (~> 0.5)
     domain_name (0.5.20170223)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
@@ -21,7 +19,6 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
-    i18n (0.8.1)
     json (2.0.3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -32,8 +29,7 @@ GEM
       rake
     public_suffix (2.0.5)
     rake (12.0.0)
-    ruby-enum (0.7.1)
-      i18n
+    redcarpet (3.4.0)
     simple_oauth (0.3.1)
     thread_safe (0.3.6)
     twitter (6.1.0)
@@ -55,9 +51,9 @@ PLATFORMS
 
 DEPENDENCIES
   chronic
-  commonmarker
   postmark
   rake
+  redcarpet
   twitter
 
 RUBY VERSION
