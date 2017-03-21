@@ -2,5 +2,6 @@
   "name": "Tweet Today",
   "description": "A simple app for emailing today's tweets",
   "repository": "https://github.com/icco/tweet-today",
+  "addons": ["scheduler:standard", "postmark:10k"],
   "keywords": ["ruby", "twitter", "cron"]
 }
