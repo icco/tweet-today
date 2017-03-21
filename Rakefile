@@ -31,10 +31,13 @@ task :tweet do
   })
 
   if ENV['POSTMARK_API_TOKEN']
+    raise "$EMAIL_TO_ADDRESS not set in ENV, cannot email." if ENV["EMAIL_TO_ADDRESS"].nil?
+    raise "$EMAIL_FROM_ADDRESS not set in ENV, cannot email." if ENV["EMAIL_FROM_ADDRESS"].nil?
+
     client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
     client.deliver(
-      from: "Tweet Today <tweets@distraction.today>",
-      to: 'Nat Welch <nat@natwelch.com>',
+      from: ENV["EMAIL_FROM_ADDRESS"],
+      to: ENV["EMAIL_TO_ADDRESS"],
       subject: "Tweet Today #{Time.now.strftime("%F")}",
       html_body: html,
       track_links: :html_only)
