@@ -9,12 +9,18 @@ task default: :tweet
 
 desc "Gets tweets"
 task :tweet do
+  raise "$TWITTER_KEY not set in ENV, cannot start." if ENV['TWITTER_KEY'].nil?
+  raise "$TWITTER_SECRET not set in ENV, cannot start." if ENV['TWITTER_SECRET'].nil?
+  raise "$TWITTER_LIST not set in ENV, cannot start." if ENV['TWITTER_LIST'].nil?
+
   client = Twitter::REST::Client.new do |config|
-    config.consumer_key = "9WillnTISas5zRRHDnEAXhtNz"
-    config.consumer_secret = "OmjEz2xHwuX80sBqzU592ggSS1GAzssqRdZJlIWnrgQ8Ab1DT7"
+    config.consumer_key = ENV["TWITTER_KEY"]
+    config.consumer_secret = ENV["TWITTER_SECRET"]
   end
 
-  messages = client.list_timeline("icco", "short-list", {count: 500}).delete_if do |t|
+  username, list_id = ENV["TWITTER_LIST"].split("/")
+
+  messages = client.list_timeline(username, list_id, {count: 1000}).delete_if do |t|
     Chronic.parse("last night") > t.created_at
   end
 
