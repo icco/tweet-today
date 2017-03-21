@@ -1,0 +1,14 @@
+<h1>Tweets for <%= Time.now.strftime("%F") %>:</h1>
+
+<% messages.each do |t| %>
+  <blockquote>
+    <p>
+    "<%= t.full_text %>"
+    </p>
+  </blockquote>
+
+  <ul>
+    <li>@<%= t.user.screen_name %> / <%= t.created_at %></li>
+    <li><%= t.uri %></li>
+  </ul>
+<% end %>

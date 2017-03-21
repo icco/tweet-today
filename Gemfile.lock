@@ -8,6 +8,7 @@ GEM
     domain_name (0.5.20170223)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
+    erubis (2.7.0)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     http (2.2.1)
@@ -29,9 +30,9 @@ GEM
       rake
     public_suffix (2.0.5)
     rake (12.0.0)
-    redcarpet (3.4.0)
     simple_oauth (0.3.1)
     thread_safe (0.3.6)
+    tilt (2.0.7)
     twitter (6.1.0)
       addressable (~> 2.5)
       buftok (~> 0.2.0)
@@ -51,9 +52,10 @@ PLATFORMS
 
 DEPENDENCIES
   chronic
+  erubis
   postmark
   rake
-  redcarpet
+  tilt
   twitter
 
 RUBY VERSION

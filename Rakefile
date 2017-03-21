@@ -14,15 +14,12 @@ task :tweet do
     config.consumer_secret = "OmjEz2xHwuX80sBqzU592ggSS1GAzssqRdZJlIWnrgQ8Ab1DT7"
   end
 
-  emailbody = "# Tweets for #{Time.now.strftime("%F")}:\n\n"
-
-  client.list_timeline("icco", "short-list", {count: 500}).each do |t|
-    break if Chronic.parse("last night") > t.created_at
-    emailbody += "> \"#{t.full_text}\"\n\n - @#{t.user.screen_name} / #{t.created_at}\n - #{t.uri}\n\n"
+  messages = client.list_timeline("icco", "short-list", {count: 500}).delete_if do |t|
+    Chronic.parse("last night") > t.created_at
   end
 
-  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
-  html = markdown.render(emailbody)
+  template = Tilt.new('mail.erb')
+  html = template.render(nil, {messages: messages})
 
   if ENV['POSTMARK_API_TOKEN']
     client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
@@ -31,11 +28,8 @@ task :tweet do
       to: 'Nat Welch <nat@natwelch.com>',
       subject: "Tweet Today #{Time.now.strftime("%F")}",
       html_body: html,
-      text_body: emailbody,
-      track_links: :html_and_text)
+      track_links: :html)
   else
-    puts emailbody
-
     puts html
   end
 end
