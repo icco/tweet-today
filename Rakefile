@@ -31,7 +31,7 @@ task :tweet do
       to: 'Nat Welch <nat@natwelch.com>',
       subject: "Tweet Today #{Time.now.strftime("%F")}",
       html_body: html,
-      track_links: :html)
+      track_links: :html_only)
   else
     puts html
   end
