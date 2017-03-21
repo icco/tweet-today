@@ -21,7 +21,7 @@ task :tweet do
   template = Tilt.new('mail.erb')
   html = template.render(nil, {
     messages: messages,
-    oembeds: client.oembeds(messages)
+    oembeds: client.oembeds(messages, {omit_script: true})
   })
 
   if ENV['POSTMARK_API_TOKEN']
