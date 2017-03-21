@@ -1,3 +1,19 @@
+GIT
+  remote: https://github.com/sferik/twitter
+  revision: 85c1947f4a0a6b579a300fd3bf7a4aea066ee4e1
+  branch: 6-stable
+  specs:
+    twitter (6.1.0)
+      addressable (~> 2.5)
+      buftok (~> 0.2.0)
+      equalizer (= 0.0.11)
+      faraday (~> 0.11.0)
+      http (~> 2.1)
+      http_parser.rb (~> 0.6.0)
+      memoizable (~> 0.4.2)
+      naught (~> 1.1)
+      simple_oauth (~> 0.3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,16 +49,6 @@ GEM
     simple_oauth (0.3.1)
     thread_safe (0.3.6)
     tilt (2.0.7)
-    twitter (6.1.0)
-      addressable (~> 2.5)
-      buftok (~> 0.2.0)
-      equalizer (= 0.0.11)
-      faraday (~> 0.11.0)
-      http (~> 2.1)
-      http_parser.rb (~> 0.6.0)
-      memoizable (~> 0.4.2)
-      naught (~> 1.1)
-      simple_oauth (~> 0.3.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
@@ -56,7 +62,7 @@ DEPENDENCIES
   postmark
   rake
   tilt
-  twitter
+  twitter!
 
 RUBY VERSION
    ruby 2.4.0p0

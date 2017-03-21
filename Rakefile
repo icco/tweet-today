@@ -19,7 +19,10 @@ task :tweet do
   end
 
   template = Tilt.new('mail.erb')
-  html = template.render(nil, {messages: messages})
+  html = template.render(nil, {
+    messages: messages,
+    oembeds: client.oembeds(messages)
+  })
 
   if ENV['POSTMARK_API_TOKEN']
     client = Postmark::ApiClient.new(ENV['POSTMARK_API_TOKEN'])
