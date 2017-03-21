@@ -1,0 +1,6 @@
+{
+  "name": "Tweet Today",
+  "description": "A simple app for emailing today's tweets",
+  "repository": "https://github.com/icco/tweet-today",
+  "keywords": ["ruby", "twitter", "cron"]
+}
