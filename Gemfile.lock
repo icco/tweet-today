@@ -1,51 +1,56 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     buftok (0.2.0)
     chronic (0.10.2)
-    domain_name (0.5.20170404)
+    domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
     erubis (2.7.0)
-    faraday (0.11.0)
-      multipart-post (>= 1.2, < 3)
-    http (2.2.2)
+    ffi (1.15.3)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 1.0.1)
-      http_parser.rb (~> 0.6.0)
-    http-cookie (1.0.3)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
+    http-cookie (1.0.4)
       domain_name (~> 0.5)
-    http-form_data (1.0.3)
+    http-form_data (2.3.0)
+    http-parser (1.2.3)
+      ffi-compiler (>= 1.0, < 2.0)
     http_parser.rb (0.6.0)
     json (2.1.0)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
-    multipart-post (2.0.0)
+    multipart-post (2.1.1)
     naught (1.1.0)
     postmark (1.10.0)
       json
       rake
-    public_suffix (2.0.5)
+    public_suffix (4.0.6)
     rake (12.0.0)
     simple_oauth (0.3.1)
     thread_safe (0.3.6)
     tilt (2.0.7)
-    twitter (6.1.0)
-      addressable (~> 2.5)
+    twitter (7.0.0)
+      addressable (~> 2.3)
       buftok (~> 0.2.0)
-      equalizer (= 0.0.11)
-      faraday (~> 0.11.0)
-      http (~> 2.1)
+      equalizer (~> 0.0.11)
+      http (~> 4.0)
+      http-form_data (~> 2.0)
       http_parser.rb (~> 0.6.0)
-      memoizable (~> 0.4.2)
-      naught (~> 1.1)
-      simple_oauth (~> 0.3.1)
+      memoizable (~> 0.4.0)
+      multipart-post (~> 2.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.4)
+    unf_ext (0.0.7.7)
 
 PLATFORMS
   ruby
@@ -56,10 +61,10 @@ DEPENDENCIES
   postmark
   rake
   tilt
-  twitter
+  twitter (>= 6.1.0)
 
 RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.14.6
+   1.17.3
